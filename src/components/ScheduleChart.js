@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { actions } from "../redux";
 
@@ -80,26 +80,27 @@ const ScheduleChart = () => {
         dispatch(actions.setDayData(newArr));
     }
 
-    return <ResponsiveContainer width="50%" height={500}>
-        <LineChart
+    return <ResponsiveContainer width="40%" height={300}>
+        <AreaChart
             width={500}
             height={300}
             data={state.processedData}
             margin={{
                 top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
+                // right: 30,
+                // left: 20,
+                // bottom: 5,
             }}
             onClick={addToDayChart}
         >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="5 5" />
             <XAxis dataKey="schedule_date" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" name="Schedules" dataKey="schedule.length" stroke="#82ca9d" activeDot={{ r: 8 }} />
-        </LineChart>
+            <Area type="monotone" name="Schedules day wise" dataKey="schedule.length" stroke="#82ca9d" fill="#82ca9d" />
+            {/* <Line type="monotone" name="Schedules" dataKey="schedule.length" stroke="#82ca9d" activeDot={{ r: 8 }} /> */}
+        </AreaChart>
     </ResponsiveContainer>
 }
 

@@ -4,7 +4,6 @@ import { Brush, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Too
 
 import { fetchData } from "../api";
 import { actions } from "../redux";
-// import styles from "../styles/patternsChart.module.css";
 
 const PatternsChart = () => {
     const state = useSelector(state => state.patterns);
@@ -48,8 +47,6 @@ const PatternsChart = () => {
         dispatch(actions.setScheduleData(nextState.activePayload[0].payload.schedule));
     }
 
-    console.log("Main State ->", state)
-
     return <ResponsiveContainer width="100%" height={400}>
         <LineChart
             width={1700}
@@ -57,9 +54,6 @@ const PatternsChart = () => {
             data={state.processedData}
             margin={{
                 top: 15,
-                right: 35,
-                left: 20,
-                bottom: 5,
             }}
             onClick={addToSchedule}
         >

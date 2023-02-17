@@ -4,20 +4,20 @@ import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAx
 const DayChart = () => {
     const state = useSelector(state => state.day);
 
-    return <ResponsiveContainer width="50%" height={500}>
+    return <ResponsiveContainer width="40%" height={300}>
         <BarChart
             width={500}
             height={300}
             data={state.data}
             margin={{
                 top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
+                // right: 30,
+                // left: 20,
+                // bottom: 5,
             }}
         >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="slot_time" allowDuplicatedCategory={false} />
+            <CartesianGrid strokeDasharray="8 8" />
+            <XAxis dataKey="slot_time"/>
             <YAxis />
             <Tooltip />
             <Legend />
