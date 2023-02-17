@@ -33,3 +33,12 @@ export const setScheduleProcessedData = (data) => {
         })
     }
 }
+
+export const setDayData = (data) => {
+    return (dispatch) => {
+        dispatch({
+            type: "SET_DAY_DATA",
+            payload: data
+        })
+    }
+}

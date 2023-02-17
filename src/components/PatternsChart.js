@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { Brush, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 import { fetchData } from "../api";
 import { actions } from "../redux";
@@ -42,31 +42,36 @@ const PatternsChart = () => {
     }, [dispatch]);
 
     const addToSchedule = (nextState, event) => {
+        if (!nextState)
+            return;
         // setting clicked data to schedule chart
         dispatch(actions.setScheduleData(nextState.activePayload[0].payload.schedule));
     }
 
-    console.log("Main State ->",state)
+    console.log("Main State ->", state)
 
-    return <LineChart
-        width={1800}
-        height={400}
-        data={state.processedData}
-        margin={{
-            top: 15,
-            right: 30,
-            left: 20,
-            bottom: 5,
-        }}
-        onClick={addToSchedule}
-    >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="item_date" minTickGap={15} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" name="No. of schedules" dataKey="schedule.length" stroke="#8884d8" activeDot={{ r: 8 }} />
-    </LineChart>
+    return <ResponsiveContainer width="100%" height={400}>
+        <LineChart
+            width={1700}
+            height={400}
+            data={state.processedData}
+            margin={{
+                top: 15,
+                right: 35,
+                left: 20,
+                bottom: 5,
+            }}
+            onClick={addToSchedule}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="item_date" minTickGap={15} />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Brush />
+            <Line type="monotone" name="No. of schedules" dataKey="schedule.length" stroke="#8884d8" activeDot={{ r: 8 }} />
+        </LineChart>
+    </ResponsiveContainer>
 }
 
 export default PatternsChart;
