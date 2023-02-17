@@ -4,7 +4,7 @@ import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAx
 const DayChart = () => {
     const state = useSelector(state => state.day);
 
-    return <ResponsiveContainer width="40%" height={300}>
+    return <ResponsiveContainer width="50%" height={300}>
         <BarChart
             width={500}
             height={300}
