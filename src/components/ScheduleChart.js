@@ -80,7 +80,7 @@ const ScheduleChart = () => {
         dispatch(actions.setDayData(newArr));
     }
 
-    return <ResponsiveContainer width="40%" height={300}>
+    return <ResponsiveContainer width="50%" height={300}>
         <AreaChart
             width={500}
             height={300}

@@ -47,7 +47,7 @@ const PatternsChart = () => {
         dispatch(actions.setScheduleData(nextState.activePayload[0].payload.schedule));
     }
 
-    return <ResponsiveContainer width="100%" height={400}>
+    return <ResponsiveContainer width="100%" height={350}>
         <LineChart
             width={1700}
             height={400}
@@ -63,7 +63,7 @@ const PatternsChart = () => {
             <Tooltip />
             <Legend />
             <Brush />
-            <Line type="monotone" name="No. of schedules" dataKey="schedule.length" stroke="#8884d8" activeDot={{ r: 8 }} />
+            <Line type="monotone" name="Schedule item wise" dataKey="schedule.length" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
     </ResponsiveContainer>
 }
